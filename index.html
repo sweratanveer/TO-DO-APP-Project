@@ -1,35 +1,35 @@
-<!DOCTYPE html> <!-- yeh batata hai k yeh HTML5 document hai -->
-<html lang="en"> <!-- document ki language English set ki gayi hai -->
+<!DOCTYPE html> <!-- Declares this is an HTML5 document -->
+<html lang="en"> <!-- Sets the document language to English -->
 <head>
-  <meta charset="UTF-8"> <!-- character encoding UTF-8 rakhi gayi hai -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- responsive design ke liye -->
-  <title>Advanced To-Do App</title> <!-- browser tab ka title -->
-  <link rel="stylesheet" href="style.css"> <!-- external CSS file link ki gayi -->
+  <meta charset="UTF-8"> <!-- Character encoding set to UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design -->
+  <title>Advanced To-Do App</title> <!-- Title shown in the browser tab -->
+  <link rel="stylesheet" href="style.css"> <!-- Links external CSS file -->
 </head>
 <body>
-    <img src="logo.jfif" alt="Logo" class="logo"> <!-- top-left corner me logo lagaya gaya -->
+    <img src="logo.jfif" alt="Logo" class="logo"> <!-- Logo placed in the top-left corner -->
 
-    <h1 class="main-title">TO-DO APP Project</h1> <!-- page ke top-center me main title -->
+    <h1 class="main-title">TO-DO APP Project</h1> <!-- Main title at the top-center -->
 
-  <div class="container"> <!-- main container jisme dono boxes (To-Do & History) hain -->
+  <div class="container"> <!-- Main container holding both To-Do and History boxes -->
     
     <!-- Left Side: To-Do List -->
     <div class="todo-container"> <!-- To-Do list box -->
-      <h2>📝 My To-Do List</h2> <!-- box ka heading -->
-      <div class="input-section"> <!-- input aur button ka section -->
-        <input type="text" id="taskInput" placeholder="Enter task..."> <!-- task input field -->
-        <button id="addBtn">Add</button> <!-- task add karne ka button -->
+      <h2>📝 My To-Do List</h2> <!-- Heading of the box -->
+      <div class="input-section"> <!-- Section for input and button -->
+        <input type="text" id="taskInput" placeholder="Enter task..."> <!-- Input field for tasks -->
+        <button id="addBtn">Add</button> <!-- Button to add task -->
       </div>
-      <ul id="taskList"></ul> <!-- yaha par list of tasks appear hogi -->
+      <ul id="taskList"></ul> <!-- List of tasks will appear here -->
     </div>
 
     <!-- Right Side: History Log -->
-    <div class="history-container"> <!-- History log ka box -->
-      <h2>📜 Activity Log</h2> <!-- box ka heading -->
-      <ul id="historyList"></ul> <!-- yaha par history (kya add/delete hua) show hogi -->
+    <div class="history-container"> <!-- History log box -->
+      <h2>📜 Activity Log</h2> <!-- Heading of the box -->
+      <ul id="historyList"></ul> <!-- History of actions (added/deleted) will appear here -->
     </div>
 
   </div>
-  <script src="script.js"></script> <!-- external JavaScript file link ki gayi -->
+  <script src="script.js"></script> <!-- Links external JavaScript file -->
 </body>
 </html>

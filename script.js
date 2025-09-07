@@ -1,78 +1,78 @@
-const taskInput = document.getElementById("taskInput"); // input field (jahan user task likhta hai)
-const taskList = document.getElementById("taskList");   // To-Do list ka ul element
-const historyList = document.getElementById("historyList"); // History log ka ul element
+const taskInput = document.getElementById("taskInput"); // Input field (where user types the task)
+const taskList = document.getElementById("taskList");   // To-Do list UL element
+const historyList = document.getElementById("historyList"); // History log UL element
 const addBtn = document.getElementById("addBtn"); // "Add" button
 
-// 🌟 Page load hone par local storage se tasks wapas load karna
+//  Load tasks from local storage when the page loads
 window.onload = function () {
-  let savedTasks = JSON.parse(localStorage.getItem("tasks")) || []; // agar tasks hain to load karo warna khaali
-  savedTasks.forEach(task => createTaskElement(task.text, task.completed)); // har task ko list me dikhana
+  let savedTasks = JSON.parse(localStorage.getItem("tasks")) || []; // Load tasks if available, otherwise empty
+  savedTasks.forEach(task => createTaskElement(task.text, task.completed)); // Display each task in the list
 };
 
-// 🌟 Task add karna
+//  Add a new task
 addBtn.addEventListener("click", addTask);
 
 function addTask() {
-  if (taskInput.value === "") { // agar input khaali hai
-    alert("Please enter a task!"); // warning message
-    return; // function rok do
+  if (taskInput.value === "") { // If input is empty
+    alert("Please enter a task!"); // Show warning message
+    return; // Stop the function
   }
-  createTaskElement(taskInput.value, false); // naya task banao
-  logHistory(`Added: "${taskInput.value}"`); // history me likho k add hua
-  saveTasks(); // local storage me save karo
-  taskInput.value = ""; // input box ko clear kar do
+  createTaskElement(taskInput.value, false); // Create a new task
+  logHistory(`Added: "${taskInput.value}"`); // Log the addition in history
+  saveTasks(); // Save tasks to local storage
+  taskInput.value = ""; // Clear input box
 }
 
-// 🌟 Naya task element banana
+//  Create a new task element
 function createTaskElement(text, completed) {
-  let li = document.createElement("li"); // naya li banaya
-  li.textContent = text; // li me task ka text likh diya
+  let li = document.createElement("li"); // Create a new <li>
+  li.textContent = text; // Set task text
 
-  if (completed) { // agar task completed hai
-    li.classList.add("completed"); // usko completed class do
+  if (completed) { // If task is completed
+    li.classList.add("completed"); // Add completed class
   }
 
-  // ✅ Task ko complete/incomplete mark karne ka option
+  //  Toggle task complete/incomplete
   li.addEventListener("click", function () {
-    li.classList.toggle("completed"); // click karne par complete/incomplete ho jaye
+    li.classList.toggle("completed"); // Toggle between complete/incomplete
     if (li.classList.contains("completed")) {
-      logHistory(`Completed: "${text}"`); // history me likho k complete hua
+      logHistory(`Completed: "${text}"`); // Log completion
     } else {
-      logHistory(`Marked Incomplete: "${text}"`); // history me likho k incomplete hua
+      logHistory(`Marked Incomplete: "${text}"`); // Log marked incomplete
     }
-    saveTasks(); // changes ko save karo
+    saveTasks(); // Save changes
   });
 
-  // ❌ Delete Button
+  //  Delete Button
   let delBtn = document.createElement("button"); 
-  delBtn.textContent = "X"; // button ka text
-  delBtn.classList.add("delete-btn"); // delete button ka CSS class
+  delBtn.textContent = "X"; // Button text
+  delBtn.classList.add("delete-btn"); // Add CSS class for delete button
   delBtn.onclick = function (e) {
-    e.stopPropagation(); // parent click event ko rokna
-    li.remove(); // task ko hatao
-    logHistory(`Deleted: "${text}"`); // history me likho k delete hua
-    saveTasks(); // changes ko save karo
+    e.stopPropagation(); // Prevent parent click event
+    li.remove(); // Remove task
+    logHistory(`Deleted: "${text}"`); // Log deletion
+    saveTasks(); // Save changes
   };
 
-  li.appendChild(delBtn); // delete button ko task ke sath jodo
-  taskList.appendChild(li); // task ko ul me add karo
+  li.appendChild(delBtn); // Attach delete button to the task
+  taskList.appendChild(li); // Add task to the list
 }
 
-// 🌟 Tasks ko Local Storage me save karna
+//  Save tasks to Local Storage
 function saveTasks() {
   let tasks = [];
   document.querySelectorAll("#taskList li").forEach(li => {
     tasks.push({
-      text: li.childNodes[0].nodeValue.trim(), // task ka text
-      completed: li.classList.contains("completed") // completed status
+      text: li.childNodes[0].nodeValue.trim(), // Task text
+      completed: li.classList.contains("completed") // Completed status
     });
   });
-  localStorage.setItem("tasks", JSON.stringify(tasks)); // JSON me convert karke save karna
+  localStorage.setItem("tasks", JSON.stringify(tasks)); // Save as JSON in local storage
 }
 
-// 🌟 History me log karna
+//  Log actions in history
 function logHistory(action) {
-  let li = document.createElement("li"); // naya li banao
-  li.textContent = action + " (" + new Date().toLocaleTimeString() + ")"; // action + current time show karo
-  historyList.insertBefore(li, historyList.firstChild); // hamesha naya action upar dikhai de
+  let li = document.createElement("li"); // Create a new <li>
+  li.textContent = action + " (" + new Date().toLocaleTimeString() + ")"; // Show action + current time
+  historyList.insertBefore(li, historyList.firstChild); // Always show latest action at the top
 }
