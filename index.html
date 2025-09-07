@@ -1,0 +1,35 @@
+<!DOCTYPE html> <!-- yeh batata hai k yeh HTML5 document hai -->
+<html lang="en"> <!-- document ki language English set ki gayi hai -->
+<head>
+  <meta charset="UTF-8"> <!-- character encoding UTF-8 rakhi gayi hai -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- responsive design ke liye -->
+  <title>Advanced To-Do App</title> <!-- browser tab ka title -->
+  <link rel="stylesheet" href="style.css"> <!-- external CSS file link ki gayi -->
+</head>
+<body>
+    <img src="logo.jfif" alt="Logo" class="logo"> <!-- top-left corner me logo lagaya gaya -->
+
+    <h1 class="main-title">TO-DO APP Project</h1> <!-- page ke top-center me main title -->
+
+  <div class="container"> <!-- main container jisme dono boxes (To-Do & History) hain -->
+    
+    <!-- Left Side: To-Do List -->
+    <div class="todo-container"> <!-- To-Do list box -->
+      <h2>📝 My To-Do List</h2> <!-- box ka heading -->
+      <div class="input-section"> <!-- input aur button ka section -->
+        <input type="text" id="taskInput" placeholder="Enter task..."> <!-- task input field -->
+        <button id="addBtn">Add</button> <!-- task add karne ka button -->
+      </div>
+      <ul id="taskList"></ul> <!-- yaha par list of tasks appear hogi -->
+    </div>
+
+    <!-- Right Side: History Log -->
+    <div class="history-container"> <!-- History log ka box -->
+      <h2>📜 Activity Log</h2> <!-- box ka heading -->
+      <ul id="historyList"></ul> <!-- yaha par history (kya add/delete hua) show hogi -->
+    </div>
+
+  </div>
+  <script src="script.js"></script> <!-- external JavaScript file link ki gayi -->
+</body>
+</html>

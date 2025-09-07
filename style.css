@@ -1,0 +1,175 @@
+/*  Background (poore page ka background aur center alignment set kiya gaya) */
+body {
+  margin: 0; /* margin hata diya */
+  font-family: Arial, sans-serif; /* font family set */
+  height: 100vh; /* full screen height */
+  background: linear-gradient(135deg, #74ebd5, #9face6); /* gradient background */
+  display: flex; /* flexbox use */
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+  position: relative; /* relative positioning for children */
+}
+
+/*  Top Title (app ka main title style) */
+.main-title {
+  position: absolute; /* fixed top position */
+  top: 20px;
+  left: 50%; /* center align horizontally */
+  transform: translateX(-50%); /* perfect center karne ke liye */
+  font-size: 50px; /* bada font size */
+  font-weight: bold;
+  color: #0b0101; /* dark color */
+  text-shadow: 0px 4px 8px rgba(0,0,0,0.3); /* shadow effect */
+  letter-spacing: 1.5px; /* letters ke beech space */
+}
+
+/*  Logo Top Left (app ka logo style aur hover effect) */
+.logo {
+  position: absolute;
+  top: 15px; /* top se thoda neeche */
+  left: 20px; /* left side corner */
+  width: 60px;  /* logo ka size */
+  height: 60px;
+  border-radius: 50%; /* gol banaya */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* shadow effect */
+  object-fit: cover; /* image ko resize kar ke fit karna */
+  transition: transform 0.3s; /* hover par smooth zoom */
+}
+
+.logo:hover {
+  transform: scale(1.1); /* hover par zoom thoda */
+}
+
+/*  Main Container (do boxes ko side-by-side rakhne ke liye) */
+.container {
+  display: flex; /* flex layout */
+  gap: 30px; /* boxes ke darmiyan gap */
+  width: 90%;
+  max-width: 1100px; /* max width limit */
+}
+
+/*  To-Do Box &  History Box (dono boxes ka design) */
+.todo-container, .history-container {
+  background: linear-gradient(135deg, #adf0f7, #adf0f7); /* halka blue background */
+  padding: 20px; /* andar ka spacing */
+  border-radius: 12px; /* gol corners */
+  width: 45%; /* box ki width */
+  height: 400px; /* box ki height */
+  box-shadow: 0px 6px 15px rgba(0,0,0,0.12); /* shadow */
+  display: flex;
+  flex-direction: column; /* content column me */
+  transition: transform 0.3s, box-shadow 0.3s; /* hover effect smooth */
+}
+
+.todo-container:hover, .history-container:hover {
+  transform: translateY(-5px); /* thoda upar uthta hai hover par */
+  box-shadow: 0px 12px 25px rgba(0,0,0,0.25); /* aur shadow */
+}
+
+/*  Headings (boxes ke headings ka style) */
+.todo-container h2, .history-container h2 {
+  text-align: center; /* center me text */
+  margin-bottom: 15px;
+  color: #0c0c0c; /* text color */
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px; /* space between letters */
+  text-transform: uppercase; /* sab capital letters */
+  border-bottom: 2px solid #060707; /* underline border */
+  padding-bottom: 8px; /* neeche space */
+}
+
+/* ✏ Input Section (task add karne ka area) */
+.input-section {
+  display: flex; /* input aur button side by side */
+  gap: 10px;
+}
+
+input {
+  flex: 1; /* input full jagah le */
+  padding: 10px;
+  border: 1px solid #0808dd; /* blue border */
+  border-radius: 6px; /* gol corners */
+  outline: none; /* outline hatayi */
+  font-size: 15px;
+}
+
+button {
+  padding: 10px 15px;
+  background: #1fb8ef; /* button color */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer; /* pointer cursor */
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s; /* smooth hover */
+}
+
+button:hover {
+  background: #00c6ff; /* hover par color change */
+}
+
+/*  List Style (tasks aur history ke liye list style) */
+ul {
+  margin-top: 15px;
+  list-style: none; /* bullets hataye */
+  padding: 0;
+  flex: 1;
+  overflow-y: auto; /* scroll allow */
+}
+
+/*  To-Do Tasks (individual task ka style) */
+li {
+  display: flex;
+  justify-content: space-between; /* text left aur delete button right */
+  align-items: center;
+  background: #fdfdfd;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  border-left: 5px solid #4facfe; /* left blue line */
+  transition: background 0.3s, transform 0.2s;
+}
+
+li:hover {
+  background: #eef6ff; /* hover par halka blue */
+  transform: scale(1.02); /* thoda zoom */
+}
+
+li.completed {
+  text-decoration: line-through; /* completed ka strike */
+  background: #d4f7d4; /* green background completed task ke liye */
+  border-left: 5px solid #28a745; /* green left border */
+}
+
+/*  Delete Button (task delete button ka style) */
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background: darkred; /* hover par dark red */
+}
+
+/*  History Items (history log ka style) */
+.history-container ul li {
+  background: #eef6ff; /* halka blue background */
+  border-left: 4px solid #4facfe; /* left border blue */
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.history-container ul li:hover {
+  background: #dceeff; /* hover par aur blue */
+}
